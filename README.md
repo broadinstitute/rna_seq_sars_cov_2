@@ -1,5 +1,3 @@
-# rna_seq_sars_cov_2
-
 Human and SARS-CoV-2 RNA-Seq workflow that:
 
 * Aligns to human and SARS-CoV-2 genomes
