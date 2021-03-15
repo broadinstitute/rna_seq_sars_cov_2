@@ -14,7 +14,7 @@ workflow rna_seq_sars_cov_2 {
         Array[File] read1
         Array[File] read2
 
-        File viral_ref_fasta
+        File? viral_ref_fasta
 
         File reference # tar.gz file of RSEM or cellranger reference
         Int star_cpu = 12
@@ -105,7 +105,7 @@ workflow rna_seq_sars_cov_2 {
             input:
                 sample_name=sample_id,
                 reference=reference,
-                is_paired=defined(read2),
+                is_paired=defined(read2) && length(read2)>0,
                 cpu=rsem_cpu,
                 memory=rsem_memory,
                 bam=star.transcript_coords_bam
@@ -161,7 +161,7 @@ workflow rna_seq_sars_cov_2 {
                     haplotype_caller_args_for_extra_reads="-dont-use-soft-clipped-bases --stand-call-conf 20 --recover-dangling-heads true --sample-ploidy 1"
             }
 
-            Int? extra_bam_number_of_reads = ctat_mutations_ss2.extra_bam_number_of_reads
+            Int? extra_bam_number_of_reads = select_first([ctat_mutations_ss2.extra_bam_number_of_reads, 0])
 
             if(extra_bam_number_of_reads>0) {
                 call trinityrnaseq.trinityrnaseq as trinityrnaseq_ss2 {
@@ -231,7 +231,7 @@ workflow rna_seq_sars_cov_2 {
                 haplotype_caller_args_for_extra_reads="-dont-use-soft-clipped-bases --stand-call-conf 20 --recover-dangling-heads true --sample-ploidy 1"
         }
 
-        Int? extra_bam_number_of_reads = ctat_mutations.extra_bam_number_of_reads
+        Int? extra_bam_number_of_reads = select_first([ctat_mutations.extra_bam_number_of_reads, 0])
 
         if(extra_bam_number_of_reads>0) {
             call trinityrnaseq.trinityrnaseq as trinityrnaseq {
@@ -343,7 +343,7 @@ workflow rna_seq_sars_cov_2 {
 
 task minimap2 {
     input {
-        File ref_fasta
+        File? ref_fasta
         File assembled_fasta
         String output_base_name
         String flags
@@ -380,7 +380,7 @@ task create_report {
         File? viral_bam_index
         File? assembled_bam
         File? assembled_bam_index
-        File ref_fasta
+        File? ref_fasta
 
     }
 
