@@ -6,7 +6,7 @@ Human and SARS-CoV-2 RNA-Seq workflow that:
 * Calls variants from SARS-CoV-2 and human reads
 * Assembles SARS-CoV-2 genome using Trinity
 * Aligns assembled genome to reference using minimap2
-* Computes UMAP embedding, clusters, find differentially expressed genes, and provides visualization
+* Computes UMAP embedding, clusters, finds differentially expressed genes, and provides visualization
   using [cumulus]((https://cumulus.readthedocs.io/)) (10x or Smart-Seq2 single cell data)
 
 ## Examples
