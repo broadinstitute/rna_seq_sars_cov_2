@@ -225,6 +225,8 @@ Example Input:
     wget https://data.broadinstitute.org/Trinity/CTAT_RESOURCE_LIB/GRCh37_gencode_v19_CTAT_lib_Apr032020.plug-n-play.tar.gz
   ```
 
+  Alternatively, you can provide a custom FASTA and GTF
+  
 - Download your viral genome of interest. The SARS-COV-2 genome FASTA is available 
   [here](https://raw.githubusercontent.com/broadinstitute/rna_seq_sars_cov_2/main/resources/SARSCoV2.fa) and the GTF 
   [here](https://raw.githubusercontent.com/broadinstitute/rna_seq_sars_cov_2/main/resources/SARSCoV2.gtf).
