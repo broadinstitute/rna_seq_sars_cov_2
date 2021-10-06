@@ -1,0 +1,17 @@
+version: 1.2
+workflows:
+   - name: ctat_mutations
+     subclass: WDL
+     primaryDescriptorPath: /WDL/ctat_mutations.wdl
+   - name: cumulus
+     subclass: WDL
+     primaryDescriptorPath: /WDL/cumulus.wdl
+   - name: rna_seq_covid_create_reference
+     subclass: WDL
+     primaryDescriptorPath: /WDL/rna_seq_covid_create_reference.wdl
+   - name: rna_seq_sars_cov_2
+     subclass: WDL
+     primaryDescriptorPath: /WDL/rna_seq_sars_cov_2.wdl
+   - name: trinityrnaseq
+     subclass: WDL
+     primaryDescriptorPath: /WDL/trinityrnaseq.wdl
