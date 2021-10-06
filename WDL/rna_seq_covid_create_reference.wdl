@@ -1,4 +1,4 @@
-version 1.0
+version development
 
 workflow rna_seq_sars_cov_2_create_reference {
     input {
